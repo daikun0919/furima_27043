@@ -9,6 +9,15 @@
 - has_many :goods  through:  :order_goods
 has_many :order_goods
 
+## accountテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|image|string|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+
 ## goodsテーブル
 |Column|Type|Options|
 |------|----|-------|
