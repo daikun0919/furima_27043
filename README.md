@@ -40,3 +40,4 @@ has_many :order_goods
 ### Association
 - belongs_to :goods
 - belongs_to :user
+
