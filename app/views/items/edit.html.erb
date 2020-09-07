@@ -73,17 +73,17 @@ app/assets/stylesheets/items/new.css %>
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box"}) %>
+        <%= f.collection_select(:delivery_id, Delivery.all, :id, :name, {}, {class:"delivery-select"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box"}) %>
+        <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"area-select"}) %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box"}) %>
+        <%= f.collection_select(:day_id, Day.all, :id, :name, {}, {class:"day-select"}) %>
       </div>
     </div>
     <%# /配送について %>
@@ -141,7 +141,7 @@ app/assets/stylesheets/items/new.css %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', "#", class:"back-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
