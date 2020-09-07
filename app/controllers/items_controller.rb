@@ -2,29 +2,22 @@ class ItemsController < ApplicationController
   before_action:authenticate_user!
 
   def index
-    @articles = Article.order("created_at DESC")
   end
   
   def new
     @item = Item.new
-    # @item << current_user
-    @article = Article.new
+    #@item << current_user
   end
 
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path, notice: '商品を投稿しました'
-    else
-      render :new
-    end
-
-    @article = Article.new(article_params)
-    if @article.save
+      item = Item.find(@item.id)
       redirect_to root_path
     else
-      render :new
+      redirect_to new_item_path
     end
+
   end
 
   def edit
@@ -43,10 +36,6 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, user_ids: [])
-  end
-
-  def article_params
-    params.require(:article).permit(:genre_id)
   end
   
 end
