@@ -15,5 +15,7 @@ class Item < ApplicationRecord
 
   has_many :items_users
   has_many :users, through: :items_users
-  validates :name, presence: true, uniqueness: true
+  validates :item_name, presence: true, uniqueness: true
+  validates :image, presence: true
+  has_one_attached :image
 end
