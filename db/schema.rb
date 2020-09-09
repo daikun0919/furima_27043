@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_024424) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "item_price", null: false
     t.string "item_name", null: false
     t.string "genre_id", null: false
@@ -44,15 +45,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_024424) do
     t.string "item_explain", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "items_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "item_id"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_items_users_on_item_id"
-    t.index ["user_id"], name: "index_items_users_on_user_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "user_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,6 +75,5 @@ ActiveRecord::Schema.define(version: 2020_09_08_024424) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "items_users", "items"
-  add_foreign_key "items_users", "users"
+  add_foreign_key "items", "users"
 end

@@ -13,8 +13,7 @@ class Item < ApplicationRecord
   validates :area_id, numericality: { other_than: 1 }
   validates :day_id, numericality: { other_than: 1 }
 
-  has_many :items_users
-  has_many :users, through: :items_users
+  belongs_to :user
   validates :item_name, presence: true, uniqueness: true
   validates :image, presence: true
   has_one_attached :image
