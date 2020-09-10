@@ -1,7 +1,5 @@
 class UserAccount < ApplicationRecord
   with_options presence: true do
-    validates :card_number, uniqueness: true
-    validates :card_period
     validates :security_code, uniqueness: true
     validates :postal_code, presence: true, uniqueness: true
     validates :area_id
