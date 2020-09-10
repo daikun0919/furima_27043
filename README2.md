@@ -3,41 +3,58 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
 |email|string|null: false|
-|password|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
 |nickname|string|null: false|
 |birthday|string|null: false|
+|password|string|null: false|
+|password_confirmation|string|null: false|
 ### Association
-- has_many :goods  through :items_user
-has_many :items_user
+- has_many :items
+- belongs_to :order
 
-## user_accountテーブル
+
+## transactionテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_name|string|null: false|
-|expiration_date|string|null: false|
-|security_cord|string|null: false|
-|card_name|string|null: false|
+|post_code|string|null: false|
+|area_id|string|null: false|
+|municipality|string|null: false|
+|block_number|string|null: false|
+|apartment_name|string|null: false|
+|phone_number|string|null: false|
 ### Association
 - belongs_to :user
+
+
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
-|image|string|
 |user_id|integer|null: false, foreign_key: true|
-|items_user|integer|null: false, foreign_key: true|
+|genre_id|integer|null: false, foreign_key: true|
+|status_id|integer|null: false, foreign_key: true|
+|delivery_id|integer|null: false, foreign_key: true|
+|area_id|integer|null: false, foreign_key: true|
+|day_id|integer|null: false, foreign_key: true|
+|item_name|string|null: false|
+|image|string|null: false|
+
 ### Association
 - belongs_to :user
+- belongs_to :order
+
+
 
 ## orderテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|goods_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :goods
+- belongs_to :item
 - belongs_to :user
 

@@ -33,15 +33,16 @@ class ItemsController < ApplicationController
     if @item.attributes
       redirect_to root_path
     else
-      render :edit
       redirect_to edit_item
     end
   end
 
   def destroy
-    @item = Item.find_by(id: params[:id])
+    if @item = Item.find_by(id: params[:id])
       @item.destroy
+    else
       redirect_to :root
+    end
   end
 
   private
