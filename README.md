@@ -32,7 +32,7 @@ has_many :items_user
 ### Association
 - belongs_to :user
 
-## items_userテーブル
+## orderテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|

@@ -48,6 +48,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -66,3 +67,4 @@ gem 'mini_magick'
 group :development do
   gem 'web-console'
 end
+gem 'payjp'

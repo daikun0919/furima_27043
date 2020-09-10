@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action:authenticate_user!, only: [:show, :edit, :update, :destroy]
+  before_action:authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   def index
     @items = Item.all
@@ -17,26 +17,26 @@ class ItemsController < ApplicationController
     else
       redirect_to new_item_path
     end
-
-  end
-
-  def edit
-  end
-
-  def update
-    @item = Item.find(params[:id])
-    if @item.update(item_params)
-      redirect_to root_path, notice: '商品を変更しました'
-    else
-      render :edit
-    end
   end
 
   def show
     @item = Item.find(params[:id])
   end
 
-  def destory
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to root_path
+  end
+
+  def destroy
+    @item = Item.find_by(id: params[:id])
+      @item.destroy
+      redirect_to :root
   end
 
   private
