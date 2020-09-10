@@ -15,5 +15,11 @@ describe User do
       expect(user.errors[:email]).to include("can't be blank")
     end
 
+    it "is invalid without an password" do
+      user = build(:user, password: "")
+      user.valid?
+      expect(user.errors[:password]).to include("can't be blank")
+    end
+
   end
 end

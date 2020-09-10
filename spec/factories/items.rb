@@ -5,11 +5,11 @@ FactoryBot.define do
     item_price         {"kkk@gmail.com"}
     item_name          {"abc"}
     item_explain       {"abc"}
-    genre_id           {"00"}
-    status_id          {"00"}
-    delivery_id        {"00"}
-    area_id            {"00"}
-    day_id             {"00"}
+    genre_id           {"2"}
+    status_id          {"2"}
+    delivery_id        {"2"}
+    area_id            {"2"}
+    day_id             {"2"}
   end
 
 end

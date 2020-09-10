@@ -1,9 +1,15 @@
 class TransactionsController < ApplicationController
+  before_action:authenticate_user!, only: [:index, :create]
+
+
+
   def index
+    @item = Item.find(params[:item_id])
+    
   end
 
   def create
-    @transaction = Transaction.new(price: transaction_params[:price])
+    @transaction = Transaction.new(item: transaction_params[:item])
     if @transaction.valid?
       pay_item
       @transaction.save

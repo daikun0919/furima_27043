@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      redirect_to new_item_path
+      render :new
     end
   end
 
@@ -30,7 +30,12 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to root_path
+    if @item.attributes
+      redirect_to root_path
+    else
+      render :edit
+      redirect_to edit_item
+    end
   end
 
   def destroy
