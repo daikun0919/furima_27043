@@ -12,6 +12,7 @@ class UserTransaction
     validates :municipality
     validates :block_number
     validates :phone_number
+    validates :token
   end
 
   def save

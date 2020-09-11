@@ -11,10 +11,8 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = UserTransaction.new(transaction_params)
-    #@transaction = Order.new(order_params)
-
+    @item = Item.find(params[:item_id])
     if @transaction.valid?
-      
       pay_item
       @transaction.save
       return redirect_to root_path
@@ -23,8 +21,6 @@ class TransactionsController < ApplicationController
       render 'index'
     end
 
-    # @donation = UserDonation.new(donation_params)   #「UserDonation」に編集
-    # @donation.save
   end
 
   private
@@ -34,9 +30,10 @@ class TransactionsController < ApplicationController
   end
 
   def pay_item
+    
     Payjp.api_key = "sk_test_e775868e20f3c5484dcff14c"  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: transaction_params[:price],  # 商品の値段
+      amount: transaction_params[:item_price],  # 商品の値段
       card: transaction_params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類(日本円)
     )

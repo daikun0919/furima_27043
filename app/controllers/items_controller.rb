@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :set_message, only: [:show, :edit, :update]
+  before_action :set_message, only: [:show, :edit, :update,:destroy]
 
   def index
     @items = Item.all
@@ -29,10 +29,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  if @item.destroy
-  else
-        redirect_to :root
-      end
+  def destroy
+    if 
+      @item.destroy
+    else
+      redirect_to :root
+    end
+  end
 
   private
   def item_params
