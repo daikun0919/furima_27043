@@ -17,6 +17,7 @@ class TransactionsController < ApplicationController
     @transaction = UserTransaction.new(transaction_params)
     #@transaction = Order.new(order_params)
     if @transaction.valid?
+      binding.pry
       pay_item
       @transaction.save
       return redirect_to root_path
@@ -32,7 +33,7 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.permit(:postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number)
+    params.require(:token).permit(:postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number, :item_id)
   end
 
   def pay_item
