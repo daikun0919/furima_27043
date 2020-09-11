@@ -15,9 +15,10 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :item_name
     validates :image
+    validates :item_price
   end
   
   belongs_to :user
-  belongs_to :order
+  belongs_to :order, optional: true
   has_one_attached :image
 end

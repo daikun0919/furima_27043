@@ -8,8 +8,14 @@ class TransactionsController < ApplicationController
     
   end
 
+  # def new
+  #   @transaction = UserTransaction.new   
+  # end
+
+
   def create
-    @transaction = Order.new(order_params)
+    @transaction = UserTransaction.new(transaction_params)
+    #@transaction = Order.new(order_params)
     if @transaction.valid?
       pay_item
       @transaction.save
@@ -18,16 +24,19 @@ class TransactionsController < ApplicationController
       @item = Item.find(params[:item_id])
       render 'index'
     end
+
+    # @donation = UserDonation.new(donation_params)   #「UserDonation」に編集
+    # @donation.save
   end
 
   private
 
-  def order_params
-    params.permit(:price, :token)
+  def transaction_params
+    params.permit(:postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number)
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_XXXXXXXX"  # PAY.JPテスト秘密鍵
+    Payjp.api_key = "sk_test_e775868e20f3c5484dcff14c"  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: transaction_params[:price],  # 商品の値段
       card: transaction_params[:token],    # カードトークン

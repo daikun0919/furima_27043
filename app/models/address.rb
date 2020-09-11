@@ -1,6 +1,7 @@
-class UserAccount < ApplicationRecord
+class Address < ApplicationRecord
   with_options presence: true do
-    validates :postal_code, presence: true, uniqueness: true
+    validates :item_price
+    validates :postal_code, uniqueness: true
     validates :area_id
     validates :municipality, uniqueness: true
     validates :block_number
@@ -8,5 +9,5 @@ class UserAccount < ApplicationRecord
     validates :phone_number, uniqueness: true
   end
   
-  belongs_to :user
+   belongs_to :user
 end

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action:authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action:@item = Item.find(params[:id]), only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all
@@ -19,16 +20,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
-
-  def edit
-    @item = Item.find(params[:id])
-  end
 
   def update
-    @item = Item.find(params[:id])
     @item.update(item_params)
     if @item.attributes
       redirect_to root_path

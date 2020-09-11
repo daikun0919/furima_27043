@@ -17,5 +17,7 @@ class User < ApplicationRecord
   end
   
   has_many :items
+  belongs_to :order, optional: true
+   has_one :address
 
 end

@@ -1,4 +1,4 @@
-rrequire 'rails_helper'
+require 'rails_helper'
 
 describe Item do
   describe '#create' do
