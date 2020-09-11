@@ -3,12 +3,6 @@ require 'rails_helper'
 describe Transaction do
   describe '#create' do
 
-    it "値段がないとアイテムは保存できない" do
-      @transaction.item_price = ""
-      @transaction.valid?
-      expect(@transaction.errors.full_messages).to include("Item_price can't be blank")
-    end  
-
     it "郵便番号がないとトランスアクションは保存できない" do
       @transaction.postal_code = ""
       @transaction.valid?

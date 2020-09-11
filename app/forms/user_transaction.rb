@@ -1,7 +1,7 @@
 class UserTransaction
 
   include ActiveModel::Model
-  attr_accessor :postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number
+  attr_accessor :postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number, :item_id, :token
   
 
   
@@ -11,7 +11,6 @@ class UserTransaction
     validates :area_id
     validates :municipality
     validates :block_number
-    validates :apartment_name
     validates :phone_number
   end
 

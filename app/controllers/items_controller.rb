@@ -29,13 +29,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
-    if @item = Item.find_by(id: params[:id])
-      @item.destroy
-    else
-      redirect_to :root
-    end
-  end
+  if @item.destroy
+  else
+        redirect_to :root
+      end
 
   private
   def item_params
