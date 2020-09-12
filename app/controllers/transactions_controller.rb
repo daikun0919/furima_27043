@@ -5,13 +5,12 @@ class TransactionsController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    
   end
 
 
   def create
     @transaction = UserTransaction.new(transaction_params)
-        if @transaction.valid?
+    if @transaction.valid?
       pay_item
       @transaction.save
       return redirect_to root_path

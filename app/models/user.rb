@@ -18,6 +18,6 @@ class User < ApplicationRecord
   
   has_many :items
   belongs_to :order, optional: true
-   has_one :address
+  has_one :address
 
 end

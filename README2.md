@@ -21,13 +21,13 @@
 |Column|Type|Options|
 |------|----|-------|
 |post_code|string|null: false|
-|area_id|string|null: false|
+|area_id|integer|null: false|
 |municipality|string|null: false|
 |block_number|string|null: false|
-|apartment_name|string|null: false|
+|apartment_name|string|
 |phone_number|string|null: false|
 ### Association
-- belongs_to :user
+- belongs_to :order
 
 
 
@@ -41,11 +41,11 @@
 |area_id|integer|null: false, foreign_key: true|
 |day_id|integer|null: false, foreign_key: true|
 |item_name|string|null: false|
-|image|string|null: false|
+|item_explain|string|null: false|
 
 ### Association
 - belongs_to :user
-- belongs_to :order
+- has_one :order
 
 
 
@@ -55,6 +55,7 @@
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :item
+- belongs_to :orders
 - belongs_to :user
+- has_one :transaction
 

@@ -4,7 +4,6 @@ class Address < ApplicationRecord
     validates :area_id
     validates :municipality, uniqueness: true
     validates :block_number
-    validates :apartment_name
     validates :phone_number, uniqueness: true
   end
   
