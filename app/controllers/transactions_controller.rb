@@ -23,6 +23,15 @@ class TransactionsController < ApplicationController
 
   end
 
+  def edit
+    if item.transaction_status_id.present?
+      transaction_status_id_3
+    else
+      transaction_status_id_2
+    end
+
+  end
+
   private
 
   def transaction_params
@@ -31,11 +40,12 @@ class TransactionsController < ApplicationController
 
   def pay_item
     
+    @item = Item.find(params[:item_id])
     Payjp.api_key = "sk_test_e775868e20f3c5484dcff14c"  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: transaction_params[:item_price],  # 商品の値段
-      card: transaction_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類(日本円)
+      amount: @item.item_price, 
+      card: transaction_params[:token],    
+      currency:'jpy'                
     )
   end
  
