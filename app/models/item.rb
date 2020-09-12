@@ -19,6 +19,6 @@ class Item < ApplicationRecord
   end
   
   belongs_to :user
-  belongs_to :order, optional: true
+  has_one :order
   has_one_attached :image
 end
