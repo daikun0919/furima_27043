@@ -133,8 +133,8 @@
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
-          <%# <% if item.transaction_status_id.present? %>
-              <%# <div class='sold-out'> 
+          <% if item.order != nil %>
+              <div class='sold-out'> 
                 <span>Sold Out!!</span>
               </div>
           <% end %> 
@@ -175,7 +175,6 @@
           </div>
         </div>
         <% end %>
-      <%# <% end %> %>
       </li>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合のダミー %>

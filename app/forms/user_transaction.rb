@@ -1,7 +1,7 @@
 class UserTransaction
 
   include ActiveModel::Model
-  attr_accessor :postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number, :item_id, :token
+  attr_accessor :postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number, :user_id, :item_id, :token
   
 
   
@@ -16,6 +16,7 @@ class UserTransaction
   end
 
   def save
-    Address.create(postal_code: postal_code, area_id: area_id, municipality: municipality, block_number: block_number, apartment_name: apartment_name, phone_number: phone_number)
+    order = Order.create(user_id: user_id, item_id: item_id)
+    Address.create(postal_code: postal_code, area_id: area_id, municipality: municipality, block_number: block_number, apartment_name: apartment_name, phone_number: phone_number, order_id: order.id)
   end
 end

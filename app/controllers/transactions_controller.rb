@@ -11,23 +11,12 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = UserTransaction.new(transaction_params)
-    @item = Item.find(params[:item_id])
-    if @transaction.valid?
+        if @transaction.valid?
       pay_item
       @transaction.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render 'index'
-    end
-
-  end
-
-  def edit
-    if item.transaction_status_id.present?
-      transaction_status_id_3
-    else
-      transaction_status_id_2
     end
 
   end
@@ -35,7 +24,7 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.permit(:postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number, :item_id, :token)
+    params.permit(:postal_code, :area_id, :municipality, :block_number, :apartment_name, :phone_number, :item_id, :token).merge(user_id: current_user.id)
   end
 
   def pay_item
