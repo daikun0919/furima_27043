@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update,:destroy]
 
   def index
-    @items = Item.all
+    @items = Item.all.order("created_at")
   end
   
   def new

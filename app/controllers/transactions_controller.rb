@@ -15,6 +15,7 @@ class TransactionsController < ApplicationController
       @transaction.save
       return redirect_to root_path
     else
+      @item = Item.find(params[:item_id])
       render 'index'
     end
 
@@ -29,7 +30,7 @@ class TransactionsController < ApplicationController
   def pay_item
     
     @item = Item.find(params[:item_id])
-    Payjp.api_key = "sk_test_e775868e20f3c5484dcff14c"  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.item_price, 
       card: transaction_params[:token],    
