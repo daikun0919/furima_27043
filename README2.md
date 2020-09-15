@@ -55,7 +55,7 @@
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :orders
+- belongs_to :order
 - belongs_to :user
 - has_one :transaction
 

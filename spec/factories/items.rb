@@ -1,8 +1,7 @@
 FactoryBot.define do
 
   factory :item do
-    image              {"abe"}
-    item_price         {"kkk@gmail.com"}
+    
     item_name          {"abc"}
     item_explain       {"abc"}
     genre_id           {"2"}
@@ -10,6 +9,9 @@ FactoryBot.define do
     delivery_id        {"2"}
     area_id            {"2"}
     day_id             {"2"}
+    image              {"abc"}
+    item_price         {"000000"}
   end
 
+  association :user
 end
