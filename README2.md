@@ -9,12 +9,12 @@
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
 |nickname|string|null: false|
-|birthday|string|null: false|
+|birthday|datetime|null: false|
 |password|string|null: false|
 |password_confirmation|string|null: false|
 ### Association
 - has_many :items
-- belongs_to :order
+- has_many :orders
 
 
 ## transactionテーブル
