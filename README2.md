@@ -11,7 +11,6 @@
 |nickname|string|null: false|
 |birthday|datetime|null: false|
 |password|string|null: false|
-|password_confirmation|string|null: false|
 ### Association
 - has_many :items
 - has_many :orders

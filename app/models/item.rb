@@ -15,7 +15,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :item_name
     validates :image
-    validates :item_price #between: { in: 300..999,999,999 }
+    validates :item_price 
   end
   
   belongs_to :user
