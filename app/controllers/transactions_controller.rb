@@ -1,11 +1,7 @@
 class TransactionsController < ApplicationController
   before_action:authenticate_user!, only: [:index, :create]
+  before_action :set_transaction, only: [:index, :create]
 
-
-
-  def index
-    @item = Item.find(params[:item_id])
-  end
 
 
   def create
@@ -15,7 +11,6 @@ class TransactionsController < ApplicationController
       @transaction.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render 'index'
     end
 
@@ -36,6 +31,10 @@ class TransactionsController < ApplicationController
       card: transaction_params[:token],    
       currency:'jpy'                
     )
+  end
+
+  def set_transaction
+    @item = Item.find(params[:item_id])
   end
  
 end
