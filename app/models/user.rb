@@ -6,16 +6,23 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :email, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/}
-    validates :first_name,format: {with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/}
-    validates :last_name,format: {with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/}
-    validates :first_name_kana, format: { with: /^[ア-ン゛゜ァ-ォャ-ョー「」、]+$/}
-    validates :last_name_kana, format: { with: /^[ア-ン゛゜ァ-ォャ-ョー「」、]+$/}
     validates :nickname
     validates :birthday
-    validates :password, length: {minimum: 7}
+    validates :password, format: { with: /^(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}$/i}
     validates :password_confirmation
-  end
   
+
+    with_options format: {with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/} do
+      validates :first_name
+      validates :last_name
+    end
+
+    with_options format: { with: /^[ア-ン゛゜ァ-ォャ-ョー「」、]+$/} do
+      validates :first_name_kana
+      validates :last_name_kana
+    end
+  end
+
   has_many :items
   belongs_to :order, optional: true
   has_one :address
