@@ -33,14 +33,14 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|genre_id|integer|null: false, foreign_key: true|
-|status_id|integer|null: false, foreign_key: true|
-|delivery_id|integer|null: false, foreign_key: true|
-|area_id|integer|null: false, foreign_key: true|
-|day_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false|
+|genre_id|integer|null: false|
+|status_id|integer|null: false|
+|delivery_id|integer|null: false|
+|area_id|integer|null: false|
+|day_id|integer|null: false|
 |item_name|string|null: false|
-|item_explain|string|null: false|
+|item_explain|text|null: false|
 
 ### Association
 - belongs_to :user
