@@ -33,7 +33,7 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
+|user|reference|null: false, foreign_key: true|
 |genre_id|integer|null: false|
 |status_id|integer|null: false|
 |delivery_id|integer|null: false|
@@ -51,8 +51,8 @@
 ## orderテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
+|item|reference|null: false, foreign_key: true|
 ### Association
 - belongs_to :order
 - belongs_to :user
