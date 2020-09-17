@@ -8,7 +8,8 @@ class User < ApplicationRecord
     validates :email, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/}
     validates :nickname
     validates :birthday
-    validates :password, format: { with: /^(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}$/i}
+    VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+    validates :password, format: { with: VALID_PASSWORD_REGEX}
     validates :password_confirmation
   
 
@@ -17,7 +18,7 @@ class User < ApplicationRecord
       validates :last_name
     end
 
-    with_options format: { with: /^[ア-ン゛゜ァ-ォャ-ョー「」、]+$/} do
+    with_options format: { with: /\A[ア-ン゛゜ァ-ォャ-ョー「」、]+\z/} do
       validates :first_name_kana
       validates :last_name_kana
     end
