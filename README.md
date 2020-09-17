@@ -9,8 +9,8 @@
 |nickname|string|null: false|
 |birthday|string|null: false|
 ### Association
-- has_many :goods  through :order_goods
-has_many :order_goods
+- has_many :goods  through :items_user
+has_many :items_user
 
 ## user_accountテーブル
 |Column|Type|Options|
@@ -22,17 +22,17 @@ has_many :order_goods
 ### Association
 - belongs_to :user
 
-## goodsテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 |image|string|
 |user_id|integer|null: false, foreign_key: true|
-|order_goods_id|integer|null: false, foreign_key: true|
+|items_user|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
-## order_goodsテーブル
+## orderテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|

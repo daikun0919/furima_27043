@@ -1,0 +1,2 @@
+association :user
+association :item
