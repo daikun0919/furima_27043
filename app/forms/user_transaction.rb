@@ -11,7 +11,7 @@ class UserTransaction
     validates :area_id
     validates :municipality
     validates :block_number
-    validates :phone_number, uniqueness: true, format: { with: /\A\d+-\d+-\d+\z/ }
+    validates :phone_number
     validates :token
   end
 
@@ -20,3 +20,6 @@ class UserTransaction
     Address.create(postal_code: postal_code, area_id: area_id, municipality: municipality, block_number: block_number, apartment_name: apartment_name, phone_number: phone_number, order_id: order.id)
   end
 end
+
+#format: { /\A\d{3}[-]\d{4}\z/ }
+#format: { with: \A0[5789]0[-]?\d{4}[-]?\d{4}\z  }
