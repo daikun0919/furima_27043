@@ -11,7 +11,7 @@ class UserTransaction
     validates :area_id
     validates :municipality
     validates :block_number
-    validates :phone_number
+    validates :phone_number, uniqueness: true, format: { with: /\A\d+-\d+-\d+\z/ }
     validates :token
   end
 

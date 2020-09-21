@@ -1,8 +1,14 @@
 class TransactionsController < ApplicationController
-  before_action:authenticate_user!, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_transaction, only: [:index, :create]
 
-
+  def index
+    if @item.order == nil
+      render 'show'
+    else @item.order != nil
+      redirect_to root_path
+    end
+  end
 
   def create
     @transaction = UserTransaction.new(transaction_params)
