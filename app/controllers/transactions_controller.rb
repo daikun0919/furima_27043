@@ -9,7 +9,6 @@ class TransactionsController < ApplicationController
       @transaction.save
       return redirect_to root_path
     else
-      binding.pry
       render 'index'
     end
 
